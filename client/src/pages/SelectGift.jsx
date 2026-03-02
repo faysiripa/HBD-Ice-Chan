@@ -34,7 +34,7 @@ const SelectGift = () => {
                     <p>คราวนี้... ได้เวลาเลือกของขวัญ!!</p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-8 md:grid-cols-4 justify-center items-center">
+                <div className="grid grid-cols-2 gap-8 md:grid-cols-2 justify-center items-center">
                     <div>
                         <img src="itabag.jpg" />
                         <p className="mt-2">//มีสี: ดำ, ขาว, ม่วง, ฟ้า</p>
