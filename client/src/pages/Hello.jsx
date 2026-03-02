@@ -1,0 +1,46 @@
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/ContextProvider";
+
+const Hello = () => {
+    const { user } = useAuth();
+
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        navigate("/heart");
+    };
+
+    return (
+        <div className="font-mali flex flex-col justify-center items-center gap-10 min-h-screen">
+            <div className="fixed inset-0 z-[-2] h-screen w-screen rotate-180 transform bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(252,205,238,.5)_100%)]"></div>
+
+            <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                width="100%"
+                className="w-3/6 shadow-xl border-b border-black"
+            >
+                <source src="eye.mp4" type="video/mp4" />
+                เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
+            </video>
+            <p>ดีจย้า {user} เพื้อนน</p>
+            <div className="flex flex-col justify-center items-center">
+                <p>พ่กเลามีอะไนจาบอกแหยะ</p>
+                <p>👉🏻👈🏻</p>
+            </div>
+            <form onSubmit={handleSubmit}>
+                <button
+                    type="submit"
+                    className="border-none block w-40 bg-pink-400 text-white p-2 rounded-full animate-bounce hover:[animation-play-state:paused] cursor-pointer"
+                >
+                    ไปกันต่อ owo
+                </button>
+            </form>
+        </div>
+    );
+};
+export default Hello;
