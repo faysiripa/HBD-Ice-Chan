@@ -4,25 +4,25 @@ const SelectGift = () => {
     const [gift, setGift] = useState("");
     const [address, setAddress] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
 
-        const url =
-            "https://script.google.com/macros/s/AKfycbw73QuGSsENp038HvYQJSWw82DMgpA1IRWsBa7lWmhgROFWqdKmGQQfgE0_bPGUeJsl8g/exec";
-        fetch(url, {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: `Gift=${e.target.gift.value}&Address=${e.target.address.value}`,
-        })
-            .then((res) => res.text())
-            .then((data) => {
-                alert(data);
-            })
-            .catch((error) => console.log(error));
+    //     const url =
+    //         "https://script.google.com/macros/s/AKfycbw73QuGSsENp038HvYQJSWw82DMgpA1IRWsBa7lWmhgROFWqdKmGQQfgE0_bPGUeJsl8g/exec";
+    //     fetch(url, {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    //         body: `Gift=${e.target.gift.value}&Address=${e.target.address.value}`,
+    //     })
+    //         .then((res) => res.text())
+    //         .then((data) => {
+    //             alert(data);
+    //         })
+    //         .catch((error) => console.log(error));
 
-        setGift("");
-        setAddress("");
-    };
+    //     setGift("");
+    //     setAddress("");
+    // };
 
     return (
         <div className="font-mali pb-20">
@@ -53,7 +53,8 @@ const SelectGift = () => {
                     <p>หรือจะกรอกนอกเหนือจากในรูปก็ได้นะ</p>
 
                     <form
-                        onSubmit={handleSubmit}
+                        // onSubmit={handleSubmit}
+                        action="https://script.google.com/macros/s/AKfycbw73QuGSsENp038HvYQJSWw82DMgpA1IRWsBa7lWmhgROFWqdKmGQQfgE0_bPGUeJsl8g/exec"
                         className="flex flex-col gap-5 justify-center items-center"
                     >
                         <input
