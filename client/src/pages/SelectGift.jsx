@@ -8,7 +8,7 @@ const SelectGift = () => {
         e.preventDefault();
 
         const url =
-            "https://script.google.com/macros/s/AKfycbzHsu7GA3Gn3IABKrucQmcO1xI00X3ZF5x4hT13wxtp4k2_prazyqjZ1j03H1FskihXdw/exec";
+            "https://script.google.com/macros/s/AKfycbw73QuGSsENp038HvYQJSWw82DMgpA1IRWsBa7lWmhgROFWqdKmGQQfgE0_bPGUeJsl8g/exec";
         fetch(url, {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
