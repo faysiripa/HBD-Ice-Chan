@@ -72,7 +72,7 @@ const SelectGift = () => {
                             onChange={(e) => setAddress(e.target.value)}
                             rows={5}
                             className="border p-2 rounded shadow w-5/6"
-                            placeholder="ชื่อ ที่อยู่ เบอร์โทร ฮุ่ยเล่ฮุ่ยยยย..."
+                            placeholder="ชื่อ ที่อยู่ เบอร์โทร..."
                         />
                         <button
                             type="submit"
