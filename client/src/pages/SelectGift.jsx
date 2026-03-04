@@ -82,7 +82,8 @@ const SelectGift = () => {
                         className="flex flex-col gap-5 justify-center items-center"
                     >
                         <input
-                            name="gift"
+                            // name="gift"
+                            name="name"
                             type="text"
                             value={gift}
                             onChange={(e) => setGift(e.target.value)}
@@ -92,13 +93,22 @@ const SelectGift = () => {
                         />
                         <label>กรอกที่อยู่ด้วยคับพ้ม ม ม</label>
                         <textarea
-                            name="address"
+                            // name="address"
+                            name="message"
                             type="text"
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
                             rows={5}
                             className="border p-2 rounded shadow w-5/6"
                             placeholder="ชื่อ ที่อยู่ เบอร์โทร ฮุ่ยเล่ฮุ่ยยยย..."
+                            required
+                        />
+                        <label>ขออีเมลดั้วะฮะ :P</label>
+                        <input 
+                            name="email"
+                            type="email"
+                            className="border p-2 rounded shadow"
+                            placeholder="อีเมลคับพรี่ๆ" 
                             required
                         />
                         <button
