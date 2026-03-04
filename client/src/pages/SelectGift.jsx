@@ -41,9 +41,16 @@ const SelectGift = () => {
         const data = await response.json();
         if (data.success) {
             setResult("Form Submitted Successfully Jaaa");
+            Swal.fire({
+                title: "Success!",
+                text: "Form Submitted Successfully! eiei!",
+                icon: "success",
+            });
+            setGift("");
+            setAddress("");
             event.target.reset();
         } else {
-            setResult("Error");
+            setResult("Error TwT");
         }
     };
 
