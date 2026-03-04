@@ -25,56 +25,61 @@ const SelectGift = () => {
     //     setAddress("");
     // };
 
+    // const onSubmit = async (event) => {
+    //     event.preventDefault();
+    //     const formData = new FormData(event.target);
+
+    //     formData.append("access_key", "eb7b20ed-3b62-4883-adde-dc0a764f1f57");
+
+    //     const object = Object.fromEntries(formData);
+    //     const json = JSON.stringify(object);
+
+    //     const res = await fetch("https://api.web3forms.com/submit", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             Accept: "application/json",
+    //         },
+    //         body: json,
+    //     }).then((res) => res.json());
+
+    //     if (res.success) {
+    //         Swal.fire({
+    //             title: "Success!",
+    //             text: "Form sent successfully!",
+    //             icon: "success",
+    //         });
+    //     }
+    // };
+
+    const [result, setResult] = useState("");
+
     const onSubmit = async (event) => {
         event.preventDefault();
+        setResult("Sending....");
         const formData = new FormData(event.target);
-
         formData.append("access_key", "eb7b20ed-3b62-4883-adde-dc0a764f1f57");
 
-        const object = Object.fromEntries(formData);
-        const json = JSON.stringify(object);
-
-        const res = await fetch("https://api.web3forms.com/submit", {
+        const response = await fetch("https://api.web3forms.com/submit", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-            },
-            body: json,
-        }).then((res) => res.json());
+            body: formData,
+        });
 
-        if (res.success) {
+        const data = await response.json();
+        if (data.success) {
+            setResult("Form Submitted Successfully");
             Swal.fire({
                 title: "Success!",
                 text: "Form sent successfully!",
                 icon: "success",
             });
+            setGift("");
+            setAddress("");
+            event.target.reset();
+        } else {
+            setResult("Error");
         }
     };
-
-    // const [result, setResult] = useState("");
-
-    // const onSubmit = async (event) => {
-    //     event.preventDefault();
-    //     setResult("Sending....");
-    //     const formData = new FormData(event.target);
-    //     formData.append("access_key", "eb7b20ed-3b62-4883-adde-dc0a764f1f57");
-
-    //     const response = await fetch("https://api.web3forms.com/submit", {
-    //         method: "POST",
-    //         body: formData,
-    //     });
-
-    //     const data = await response.json();
-    //     if (data.success) {
-    //         setResult("Form Submitted Successfully");
-    //         setGift("");
-    //         setAddress("");
-    //         event.target.reset();
-    //     } else {
-    //         setResult("Error");
-    //     }
-    // };
 
     return (
         <div className="font-mali pb-20">
