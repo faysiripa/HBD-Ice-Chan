@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ACCESS_KEY from "../../.env";
+import ACCESS_KEY from "../../dotenv";
 
 const SelectGift = () => {
     const [gift, setGift] = useState("");
