@@ -65,6 +65,8 @@ const SelectGift = () => {
         const data = await response.json();
         if (data.success) {
             setResult("Form Submitted Successfully");
+            setGift("");
+            setAddress("");
             event.target.reset();
         } else {
             setResult("Error");
@@ -122,17 +124,17 @@ const SelectGift = () => {
                             onChange={(e) => setAddress(e.target.value)}
                             rows={5}
                             className="border p-2 rounded shadow w-5/6"
-                            placeholder="ชื่อ ที่อยู่ เบอร์โทร ฮุ่ยเล่ฮุ่ยยยย..."
+                            placeholder="ชื่อ ที่อยู่ เบอร์โทร..."
                             required
                         />
-                        <label>ขออีเมลดั้วะฮะ :P</label>
+                        {/* <label>ขออีเมลดั้วะฮะ :P</label>
                         <input
                             name="email"
                             type="email"
                             className="border p-2 rounded shadow"
                             placeholder="อีเมลคับพรี่ๆ"
                             required
-                        />
+                        /> */}
                         <button
                             type="submit"
                             className="border-none block w-full bg-pink-400 text-white p-2 rounded-full mt-2"
