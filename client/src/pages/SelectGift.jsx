@@ -24,28 +24,50 @@ const SelectGift = () => {
     //     setAddress("");
     // };
 
-    const VITE_ACCESS_KEY = import.meta.env.VITE_ACCESS_KEY;
+    // const VITE_ACCESS_KEY = import.meta.env.VITE_ACCESS_KEY;
+
+    // const onSubmit = async (event) => {
+    //     event.preventDefault();
+    //     const formData = new FormData(event.target);
+
+    //     formData.append("access_key", VITE_ACCESS_KEY);
+
+    //     const object = Object.fromEntries(formData);
+    //     const json = JSON.stringify(object);
+
+    //     const res = await fetch("https://api.web3forms.com/submit", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             Accept: "application/json",
+    //         },
+    //         body: json,
+    //     }).then((res) => res.json());
+
+    //     if (res.success) {
+    //         console.log("Success", res);
+    //     }
+    // };
+
+    const [result, setResult] = useState("");
 
     const onSubmit = async (event) => {
         event.preventDefault();
+        setResult("Sending....");
         const formData = new FormData(event.target);
+        formData.append("access_key", "eb7b20ed-3b62-4883-adde-dc0a764f1f57");
 
-        formData.append("access_key", VITE_ACCESS_KEY);
-
-        const object = Object.fromEntries(formData);
-        const json = JSON.stringify(object);
-
-        const res = await fetch("https://api.web3forms.com/submit", {
+        const response = await fetch("https://api.web3forms.com/submit", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-            },
-            body: json,
-        }).then((res) => res.json());
+            body: formData,
+        });
 
-        if (res.success) {
-            console.log("Success", res);
+        const data = await response.json();
+        if (data.success) {
+            setResult("Form Submitted Successfully");
+            event.target.reset();
+        } else {
+            setResult("Error");
         }
     };
 
@@ -104,11 +126,11 @@ const SelectGift = () => {
                             required
                         />
                         <label>ขออีเมลดั้วะฮะ :P</label>
-                        <input 
+                        <input
                             name="email"
                             type="email"
                             className="border p-2 rounded shadow"
-                            placeholder="อีเมลคับพรี่ๆ" 
+                            placeholder="อีเมลคับพรี่ๆ"
                             required
                         />
                         <button
@@ -117,6 +139,7 @@ const SelectGift = () => {
                         >
                             อะริกาแต้งสึเดสึหวา โฮะ โฮะ โฮะ
                         </button>
+                        <span>{result}</span>
                     </form>
                 </div>
             </div>
