@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ACCESS_KEY from "../../dotenv";
 
 const SelectGift = () => {
     const [gift, setGift] = useState("");
@@ -25,11 +24,13 @@ const SelectGift = () => {
     //     setAddress("");
     // };
 
+    const VITE_ACCESS_KEY = import.meta.env.VITE_ACCESS_KEY;
+
     const onSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
 
-        formData.append("access_key", ACCESS_KEY);
+        formData.append("access_key", VITE_ACCESS_KEY);
 
         const object = Object.fromEntries(formData);
         const json = JSON.stringify(object);
