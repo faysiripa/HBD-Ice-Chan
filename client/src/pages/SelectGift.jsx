@@ -24,7 +24,7 @@ const SelectGift = () => {
     //     setAddress("");
     // };
 
-    // const VITE_ACCESS_KEY = import.meta.env.VITE_ACCESS_KEY;
+    const VITE_ACCESS_KEY = import.meta.env.VITE_ACCESS_KEY;
 
     // const onSubmit = async (event) => {
     //     event.preventDefault();
@@ -55,7 +55,7 @@ const SelectGift = () => {
         event.preventDefault();
         setResult("Sending....");
         const formData = new FormData(event.target);
-        formData.append("access_key", "eb7b20ed-3b62-4883-adde-dc0a764f1f57");
+        formData.append("access_key", VITE_ACCESS_KEY);
 
         const response = await fetch("https://api.web3forms.com/submit", {
             method: "POST",
