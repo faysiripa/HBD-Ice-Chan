@@ -25,33 +25,6 @@ const SelectGift = () => {
     //     setAddress("");
     // };
 
-    // const onSubmit = async (event) => {
-    //     event.preventDefault();
-    //     const formData = new FormData(event.target);
-
-    //     formData.append("access_key", "eb7b20ed-3b62-4883-adde-dc0a764f1f57");
-
-    //     const object = Object.fromEntries(formData);
-    //     const json = JSON.stringify(object);
-
-    //     const res = await fetch("https://api.web3forms.com/submit", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             Accept: "application/json",
-    //         },
-    //         body: json,
-    //     }).then((res) => res.json());
-
-    //     if (res.success) {
-    //         Swal.fire({
-    //             title: "Success!",
-    //             text: "Form sent successfully!",
-    //             icon: "success",
-    //         });
-    //     }
-    // };
-
     const [result, setResult] = useState("");
 
     const onSubmit = async (event) => {
@@ -67,7 +40,7 @@ const SelectGift = () => {
 
         const data = await response.json();
         if (data.success) {
-            setResult("Form Submitted Successfully");
+            setResult("Form Submitted Successfully! Yeah! :)");
             Swal.fire({
                 title: "Success!",
                 text: "Form sent successfully!",
@@ -77,7 +50,7 @@ const SelectGift = () => {
             setAddress("");
             event.target.reset();
         } else {
-            setResult("Error");
+            setResult("Error :(");
         }
     };
 
