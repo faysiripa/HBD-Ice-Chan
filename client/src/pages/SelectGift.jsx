@@ -1,14 +1,15 @@
 import { useState } from "react";
+import ACCESS_KEY from "../../.env";
 
 const SelectGift = () => {
     const [gift, setGift] = useState("");
     const [address, setAddress] = useState("");
 
-    // const handleSubmit = (e) => {
+    // const onSubmit = (e) => {
     //     e.preventDefault();
 
     //     const url =
-    //         "https://script.google.com/macros/s/AKfycbw73QuGSsENp038HvYQJSWw82DMgpA1IRWsBa7lWmhgROFWqdKmGQQfgE0_bPGUeJsl8g/exec";
+    //         "https://script.google.com/macros/s/AKfycbzHsu7GA3Gn3IABKrucQmcO1xI00X3ZF5x4hT13wxtp4k2_prazyqjZ1j03H1FskihXdw/exec";
     //     fetch(url, {
     //         method: "POST",
     //         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -23,6 +24,29 @@ const SelectGift = () => {
     //     setGift("");
     //     setAddress("");
     // };
+
+    const onSubmit = async (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+
+        formData.append("access_key", ACCESS_KEY);
+
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        const res = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+            body: json,
+        }).then((res) => res.json());
+
+        if (res.success) {
+            console.log("Success", res);
+        }
+    };
 
     return (
         <div className="font-mali pb-20">
@@ -53,8 +77,7 @@ const SelectGift = () => {
                     <p>หรือจะกรอกนอกเหนือจากในรูปก็ได้นะ</p>
 
                     <form
-                        // onSubmit={handleSubmit}
-                        action="https://script.google.com/macros/s/AKfycbw73QuGSsENp038HvYQJSWw82DMgpA1IRWsBa7lWmhgROFWqdKmGQQfgE0_bPGUeJsl8g/exec"
+                        onSubmit={onSubmit}
                         className="flex flex-col gap-5 justify-center items-center"
                     >
                         <input
@@ -64,6 +87,7 @@ const SelectGift = () => {
                             onChange={(e) => setGift(e.target.value)}
                             className="border p-2 rounded shadow"
                             placeholder="พิมกงนิ..."
+                            required
                         />
                         <label>กรอกที่อยู่ด้วยคับพ้ม ม ม</label>
                         <textarea
@@ -73,7 +97,8 @@ const SelectGift = () => {
                             onChange={(e) => setAddress(e.target.value)}
                             rows={5}
                             className="border p-2 rounded shadow w-5/6"
-                            placeholder="ชื่อ ที่อยู่ เบอร์โทร..."
+                            placeholder="ชื่อ ที่อยู่ เบอร์โทร ฮุ่ยเล่ฮุ่ยยยย..."
+                            required
                         />
                         <button
                             type="submit"
